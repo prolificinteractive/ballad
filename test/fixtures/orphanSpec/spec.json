@@ -1,0 +1,9 @@
+{
+  "features": [
+    "overview",
+    "endpoints/doodads"
+  ],
+  "excludeEndpoints": {
+    "/products": true
+  }
+}

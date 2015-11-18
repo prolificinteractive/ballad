@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "circumference": "integer",
+    "age": "integer",
+    "manufacture_date": "string",
+    "parentExtended" : true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "properties":{
+    "SKU" : "integer",
+    "barcode" : "integer",
+    "ISBN" : "string",
+    "extendedParent": true
+  }
+}

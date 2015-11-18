@@ -1,0 +1,6 @@
+{
+  "__extends": "schemas/shortProduct",
+  "properties": {
+    "extendedProp1": "A property of a product that isnt a property of a short product"
+  }
+}

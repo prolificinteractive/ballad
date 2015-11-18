@@ -1,0 +1,37 @@
+{
+  "name": "ballad",
+  "version": "1.0.0",
+  "description": "Enables an object-oriented approach to API specs, allowing reuse and extensibility.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec test/suite.js",
+    "install": "napa"
+  },
+  "author": "Eric Weber, Shiraj Ganguly, Paul Miard",
+  "license": "MIT",
+  "dependencies": {
+    "aglio": "^1.18.0",
+    "bluebird": "^2.9.27",
+    "commander": "^2.8.1",
+    "content-tree": "0.0.1",
+    "handlebars": "^3.0.3",
+    "lodash": "^3.6.0",
+    "mime": "^1.3.4",
+    "napa": "^1.2.0",
+    "protagonist": "^0.19.0",
+    "request": "^2.57.0"
+  },
+  "napa": {
+    "matter_compiler": "https://github.com/apiaryio/matter_compiler.git"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "bin": {
+    "ballad": "./bin/ballad"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
+  }
+}

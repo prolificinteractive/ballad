@@ -1,0 +1,6 @@
+{
+  "__extends": "schemas/parentSuperGizmo",
+  "properties": {
+    "__exclude": "SKEW"
+  }
+}

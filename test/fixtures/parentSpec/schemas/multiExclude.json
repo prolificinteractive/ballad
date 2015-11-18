@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "temperature": "degrees",
+    "thickness": "microns",
+    "pressure": "psi",
+    "power": "amps"
+  }
+}

@@ -1,0 +1,8 @@
+{ 
+  "properties":{
+    "id": "integer",
+    "name": "string",
+    "price": "integer",
+    "testAttr" : true
+  }
+}

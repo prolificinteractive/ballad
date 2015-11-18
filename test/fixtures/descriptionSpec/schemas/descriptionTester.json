@@ -1,0 +1,7 @@
+{
+ "title": "Description Tester",
+ "type": "object",
+ "description": "This file pulls in another schema and changes its description.",
+ "required": true,
+ "testingKey": "{{ schema 'descriptionTest' true 'This is a description specified in a helper' }}"
+}

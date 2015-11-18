@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "parentProp1": "bubblegum",
+    "parentProp2": "whoppers",
+    "parentProp3": "snickers",
+    "parentProp4": "candy",
+    "parentProp5": "cookies",
+    "parentProp6": "chocolate"
+  }  
+}

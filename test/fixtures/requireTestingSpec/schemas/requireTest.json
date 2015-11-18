@@ -1,0 +1,5 @@
+{
+  "a_required_field": "{{ schema 'address' true }}",
+  "another_required_field": "{{ schema 'address' }}",
+  "an_optional_field": "{{ schema 'address' false }}"
+}

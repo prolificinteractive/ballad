@@ -1,0 +1,7 @@
+{
+  "properties":{
+    "NumberOfTeeth" : "integer",
+    "BinNum" : "integer",
+    "PartName" : "string"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "__extends": "schemas/parentSprocket",
+  "properties" : {
+    "name" : "string",
+    "manufacturer" : "string",
+    "widget" : "{{ schema 'widget'}}",
+    "__include": "manufacture_date"
+  }
+}

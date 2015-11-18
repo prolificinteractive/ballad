@@ -1,0 +1,6 @@
+{
+ "title": "Description Test",
+ "type": "object",
+ "description": "This description is in the json file.",
+ "required": true
+}

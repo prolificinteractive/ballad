@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "id": "string",
+    "name": "string",
+    "price": "string",
+    "widgets": {
+      "__extends": "schemas/parentSuperGizmo",
+      "properties": {
+        "__exclude": "SKEW"
+      }
+    },
+    "superWidgets": {
+      "__extends": "schemas/parentSuperGizmo",
+      "properties": {
+        "__exclude": "SSN"
+      }
+    },
+    "ultraWidgets": {
+      "__extends": "schemas/parentSuperGizmo",
+      "properties": {
+        "__exclude": ["SSN", "SKEW"]
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "__extends": "schemas/parentSprocket",
+  "properties":{
+    "childInheritExtend": true
+  }
+}

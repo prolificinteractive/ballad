@@ -1,0 +1,9 @@
+{
+  "properties":{
+    "SKU" : "integer",
+    "barcode" : "integer",
+    "ISBN" : "string",
+    "extendedParent": true,
+    "address": "{{schema 'address' true}}"
+  }
+}

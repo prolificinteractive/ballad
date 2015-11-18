@@ -1,0 +1,8 @@
+{
+  "title": "Name of the city",
+  "properties": {
+    "capitol": "boolean",
+    "population": "1,000,324",
+    "state": "NY"
+  }
+}

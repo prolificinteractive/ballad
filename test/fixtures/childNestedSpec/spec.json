@@ -1,0 +1,7 @@
+{
+  "inherit": "../parentNestedSpec",
+  "features": [
+    "overview",
+    "endpoints/sprockets"
+  ]
+}

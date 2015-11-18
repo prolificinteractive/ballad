@@ -1,0 +1,7 @@
+{
+  "properties":{
+    "__exclude": "manufacture_date",
+    "parentExtended": "parentOverridden",
+    "thisIsNotInParent": true
+  }
+}

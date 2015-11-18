@@ -1,0 +1,7 @@
+{
+  "inherit": "../parentSpec",
+  "features": [
+    "overview",
+    "endpoints/requireTester"
+  ]
+}

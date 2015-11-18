@@ -1,0 +1,10 @@
+{ 
+  "__extends": "schemas/widget",
+  "properties" : {
+    "teeth": "integer"
+  },
+  "something": {
+    "doodad_type": "string",
+    "doodad_weight": "string"
+  }
+}

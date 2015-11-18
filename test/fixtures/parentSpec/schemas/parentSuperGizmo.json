@@ -1,0 +1,7 @@
+{
+  "properties": {
+    "SKEW" : "integer",
+    "TIN Number" : "integer",
+    "SSN" : "string"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "__extends": "schemas/shortProduct",
+  "properties": {
+    "__exclude": ["parentProp5", "parentProp6"],
+    "taste": "sweet"
+  }
+}

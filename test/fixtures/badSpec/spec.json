@@ -1,0 +1,7 @@
+{
+  "features": [
+    "overview",
+    "endpoints/products",
+    "endpoints/reviews"
+  ]
+}

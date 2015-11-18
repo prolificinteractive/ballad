@@ -1,0 +1,6 @@
+{
+  "inherit": "../extendExcludeTestParent",
+  "features": [
+    "endpoints/products"
+  ]
+}

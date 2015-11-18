@@ -1,0 +1,12 @@
+{
+  "inherit": "../parentSpec",
+  "features": [
+    "overview",
+    "endpoints/parentDoodads",
+    "endpoints/sprockets",
+    "endpoints/widgets",
+    "endpoints/gizmos",
+    "endpoints/reviews",
+    "endpoints/multiExclude"
+  ]
+}

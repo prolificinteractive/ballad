@@ -1,0 +1,5 @@
+{
+  "properties": {
+    "__exclude": ["parentProp1", "parentProp2", "parentProp3"]
+  }
+}

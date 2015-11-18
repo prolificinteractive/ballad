@@ -1,0 +1,6 @@
+{
+  "name": "An Address",
+  "street": "Main Street",
+  "houseNumber" : "45",
+  "city" : "{{schema 'city' true}}"
+}

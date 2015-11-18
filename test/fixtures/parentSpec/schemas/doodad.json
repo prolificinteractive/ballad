@@ -1,0 +1,9 @@
+{
+  "__extends" : "schemas/widget",
+  "properties": {
+    "id": "string",
+    "name": "string",
+    "price": "string",
+    "parentInherited": true
+  }
+}

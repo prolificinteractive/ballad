@@ -1,0 +1,5 @@
+{
+  "aliasedSchemaKey": {
+    "__extends": "schemas/parentSuperGizmo"
+  }
+}

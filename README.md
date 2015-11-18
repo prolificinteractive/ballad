@@ -9,7 +9,7 @@ Each component of your specifications should be written with the [API Blueprint]
 format. [Check out how to write Blueprints here](https://docs.apiary.io/api_101/api_blueprint_tutorial/).
 
 Ballad was build with the [spoke-hub distribution paradigm](https://en.wikipedia.org/wiki/Spoke%E2%80%93hub_distribution_paradigm) 
-in mind, meaning it easily allows the creation of API specifications derived from a main one.
+in mind, meaning it easily allows the creation of API specifications derived from a base one, in an object-oriented manner.
 
 # Table of Contents
   1. [Installation](#installation)
@@ -31,20 +31,7 @@ $ npm install -g ballad
 $ ballad build path/to/specs path/to/output.md
 ```
 
-Loads `spec.json` at the root of the folder, and generates a blueprint version of the spec.
-
-A rundown of each option:
-
-`name` - The name of the API.  
-
-`inherit` (optional) - Path to base spec to inherit from. See [Extends and Inherits](#markdown-header-extends-and-inherits-helpers) Helpers for details.  
-
-`version` - Semantic versioning of the specs (not the API).  
-
-`features` - Concatenates markdown files at the given path within the base and child spec folders.  
-
-`excludeEndpoints` (optional) - A map of endpoint paths to omit. If the value is an array, it will only omit those methods. If it is `true`, it will omit _all_ methods for that endpoint.  
-
+Loads `spec.json` at the root of `path/to/specs`, and generates a blueprint version of the spec.
 
 ### docs command
 
@@ -79,6 +66,10 @@ spec/
 
 #### spec.json
 
+Spec files contain the complete map of your API, If you want a file to be available when 
+compiling your Blueprint, you must specify it here. We organize our files into endpoints, 
+schemas, examples, and headers, each in their respective folders.
+
 ```json
 {
   "name": "Prolific Store",
@@ -96,6 +87,13 @@ spec/
   }
 }
 ```
+A spec.json file can contain:
+
+  - `name` - The name of the API.  
+  - `inherit` (optional) - Path to base spec to inherit from. See [Extends and Inherits](#extends-and-inherits-helpers) Helpers for details.  
+  - `version` - Semantic versioning of the specs (not the API).  
+  - `features` - Markdown files at the given path within the base and child spec folders.  
+  - `excludeEndpoints` (optional) - A map of endpoint paths to omit. If the value is an array, it will only omit those methods. If it is `true`, it will omit _all_ methods for that endpoint.  
 
 #### package.json
 
@@ -172,13 +170,13 @@ you always specify those objects in the same order, in both the child and base s
 in order to properly merge them together. If you want to extend an array of objects with a new object, you must add blank 
 object placeholders (ie: {}), in the child array, and then any new objects you want to add.
 
-See [JSON Helpers](#markdown-header-json-helpers) to learn about `__exclude` and other functions.
+See [JSON Helpers](#json-helpers) to learn about `__exclude` and other functions.
 
 #### schemas/
 
 Includes body schemas to be included in endpoint files. These are optional,
 but we find it useful to include them so you can use them for API validation.
-You can use a tool like [this](http://jsonschemalint.com/draft4/) to test 
+You can use a tool like [this](http://jsonschemalint.com/) to test 
 your API.
 
 #### models/
@@ -333,9 +331,6 @@ different contexts.
 For the examples we will be using the following files:
 
 ###__SPEC FILES__
-Spec files contain the complete map of your API, If you want a file to be available when 
-compiling your Blueprint, you must specify it here. We organize our files into endpoints, 
-schemas, examples, and headers, each in their respective folders.
 
 ####Base  `./node_modules/prolific-specs/spec.json`
 ``` json

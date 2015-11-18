@@ -1,29 +1,35 @@
 # Ballad
 
-## Assemble API Blueprint specifications with concatenation, templating, and inheritance.
+Assemble API Blueprint specifications with concatenation, templating, and inheritance.
 
 Ballad is designed to write API documentation quickly and easily, using composition and 
 keeping things [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
 Each component of your specifications should be written with the [API Blueprint](https://apiblueprint.org/) 
 format. [Check out how to write Blueprints here](https://docs.apiary.io/api_101/api_blueprint_tutorial/).
+
 Ballad was build with the [spoke-hub distribution paradigm](https://en.wikipedia.org/wiki/Spoke%E2%80%93hub_distribution_paradigm) 
 in mind, meaning it easily allows the creation of API specifications derived from a main one.
 
 # Table of Contents
-  1. [Installation](#markdown-header-installation)
-  2. [Setting Up a Spec](#markdown-header-setting-up-a-spec)
-  3. [JSON Helpers](#markdown-header-json-helpers)
-  4. [Usage Examples](#markdown-header-usage-examples)
+  1. [Installation](#installation)
+  2. [Setting Up a Spec](#setting-up-a-spec)
+  3. [JSON Helpers](#json-helpers)
+  4. [Usage Examples](#usage-examples)
 
 ## Installation
 
 Node.js and NPM are required. You must install node version 0.12 prior to running the install command:
 
-`npm install -g ballad`
+```bash
+$ npm install -g ballad
+```
 
 ### build command
 
-`ballad build path/to/specs path/to/output.md`
+```bash
+$ ballad build path/to/specs path/to/output.md
+```
 
 Loads `spec.json` at the root of the folder, and generates a blueprint version of the spec.
 
@@ -42,7 +48,9 @@ A rundown of each option:
 
 ### docs command
 
-`ballad docs path/to/specs path/to/output.html`
+```bash
+$ ballad docs path/to/specs path/to/output.html
+```
 
 Loads `spec.json` at the root of the folder, and generates an HTML version of the spec.
 
@@ -92,12 +100,14 @@ spec/
 #### package.json
 
 If you plan on extending a public base spec, like `pcf-specs`, initiate an npm `package.json` file:
-
-`npm init`
+```bash
+$ npm init
+```
 
 Then install the spec:
-
-`npm install pcf-specs`
+```bash
+$ npm install pcf-specs`
+```
 
 This will allow you to lock your spec to a specific version of the base spec using the `package.json` file.
 

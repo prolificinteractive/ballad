@@ -1,6 +1,6 @@
 {
   "name": "ballad",
-  "version": "1.0.22",
+  "version": "1.0.2",
   "description": "Assemble API Blueprint specifications with concatenation, templating, and inheritance.",
   "main": "index.js",
   "scripts": {

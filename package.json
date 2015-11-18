@@ -1,6 +1,6 @@
 {
   "name": "ballad",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enables an object-oriented approach to API specs, allowing reuse and extensibility.",
   "main": "index.js",
   "scripts": {

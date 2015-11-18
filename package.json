@@ -1,7 +1,7 @@
 {
   "name": "ballad",
-  "version": "1.0.1",
-  "description": "Enables an object-oriented approach to API specs, allowing reuse and extensibility.",
+  "version": "1.0.22",
+  "description": "Assemble API Blueprint specifications with concatenation, templating, and inheritance.",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha --reporter spec test/suite.js",

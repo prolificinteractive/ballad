@@ -57,6 +57,19 @@ describe('Spec', function () {
         });
     });
 
+    it('should keep the same order of features as in the spec.json file', function () {
+      return Spec
+        .load('./test/fixtures/childSpec')
+        .call('renderBlueprint')
+        .then(helpers.blueprintToAst)
+        .tap(function (ast) {
+          var names = _.pluck(ast.resourceGroups, 'name');
+          var namesInCorrectOrder = ['Doodads', 'Sprockets', 'Widgets', 'Gizmos', 'Reviews'];
+
+          names.join('\n').should.equal(namesInCorrectOrder.join('\n'));
+        });
+    });
+
     it('should check the child spec for any overridden files', function () {
       return Spec
         .load('./test/fixtures/childNestedSpec')

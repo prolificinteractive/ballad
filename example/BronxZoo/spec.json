@@ -1,0 +1,7 @@
+{
+  "inherit": "../Zoo",
+  "features": [
+    "overview",
+    "endpoints/animals"
+  ]
+}

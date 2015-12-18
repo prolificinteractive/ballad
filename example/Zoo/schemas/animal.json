@@ -1,0 +1,5 @@
+{
+  "type": "string",
+  "name": "string",
+  "description": "this is an address, in different contexts it can be mandatory or optional"
+}

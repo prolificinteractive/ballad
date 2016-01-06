@@ -2,8 +2,8 @@
   "inherit": "../Zoo",
   "features": [
     "overview",
+    "endpoints/tours",
     "endpoints/animals",
-    "endpoints/exhibits",
-    "endpoints/tours"
+    "endpoints/exhibits"
   ]
 }

@@ -1,5 +1,12 @@
 {
-  "type": "string",
-  "name": "string",
-  "description": "this is an address, in different contexts it can be mandatory or optional"
+  "title": "Animal",
+  "type": "object",
+  "description": "An object describing an Animal at the Zoo",
+  "properties": {
+    "species": {
+      "type": "string",
+      "required": true,
+      "description": "Species of the Animal"
+    }
+  }
 }

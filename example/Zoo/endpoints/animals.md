@@ -32,17 +32,17 @@ Add a new animal to the zoo.
 
   + Body
 
-            {{example 'addAnimalRequest'}}
+            {{example 'animal'}}
 
 + Response 201 (application/json; charset=utf-8)
 
   + Body
 
-            {{example 'animalAddedResponse'}}
+            {{example 'animal'}}
 
   + Schema
 
-            {{schema 'animalAddedResponse'}}
+            {{schema 'animal'}}
 
 ## Animal [/animals/{animal_id}]
 
@@ -85,7 +85,7 @@ Update an animal in the zoo
 
   + Body
 
-            {{example 'updateAnimal'}}
+            {{example 'animal'}}
 
 + Response 200 (application/json; charset=utf-8)
 
@@ -110,16 +110,4 @@ Remove an animal from the zoo
 
             {{header 'session'}}
 
-  + Body
-
-            {{example 'deleteAnimal'}}
-
 + Response 200 (application/json; charset=utf-8)
-
-  + Body
-
-            {{example 'deleteAnimalResponse'}}
-
-  + Schema
-
-            {{schema 'deleteAnimalResponse'}}

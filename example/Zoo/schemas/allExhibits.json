@@ -1,3 +1,8 @@
 {
-  
+  "title": "Exhibits",
+  "type": "array",
+  "description": "The full list of exhibits.",
+  "required": true,
+  "minItems": 1,
+  "items" : "{{schema 'exhibit' true}}"
 }

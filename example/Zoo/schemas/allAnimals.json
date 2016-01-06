@@ -1,3 +1,8 @@
 {
-  
+  "title": "Animals",
+  "type": "array",
+  "description": "The full list of Animals.",
+  "required": true,
+  "minItems": 1,
+  "items" : "{{schema 'animal' true}}"
 }

@@ -32,17 +32,17 @@ Add a new exhibition to the zoo.
 
   + Body
 
-            {{example 'addExhibitRequest'}}
+            {{example 'exhibit'}}
 
 + Response 201 (application/json; charset=utf-8)
 
   + Body
 
-            {{example 'exhibitAddedResponse'}}
+            {{example 'exhibit'}}
 
   + Schema
 
-            {{schema 'exhibitAddedResponse'}}
+            {{schema 'exhibit'}}
 
 ## Exhibit [/exhibits/{exhibit_id}]
 
@@ -85,7 +85,7 @@ Update an exhibit in the zoo
 
   + Body
 
-            {{example 'updateExhibitRequest'}}
+            {{example 'exhibit'}}
 
 + Response 200 (application/json; charset=utf-8)
 
@@ -105,11 +105,3 @@ Remove an exhibition from the zoo
   + exhibit_id (required, string, `12345`) ... The `id` of the exhibit.
 
 + Response 200 (application/json; charset=utf-8)
-
-  + Body
-
-            {{example 'deleteExhibitResponse'}}
-
-  + Schema
-
-            {{schema 'deleteExhibitResponse'}}

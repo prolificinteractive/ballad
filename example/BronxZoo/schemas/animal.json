@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "favorite food": {
+      "type": "string",
+      "required": true,
+      "description": "The animals favorite food"
+    }
+  }
+}

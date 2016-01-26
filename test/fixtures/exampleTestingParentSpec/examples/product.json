@@ -1,0 +1,36 @@
+{
+  "id": "1234",
+  "name": "Jam",
+  "price": 45.0,
+  "discountedPrice": 40.0,
+  "description": "A Product that is sold",
+  "imageResources": {
+    "1": [
+      {
+        "url": "http://www.url1.jpg",
+        "usage": "thumbnail"
+      },
+      {
+        "url": "http://www.url2.jpg",
+        "usage": "small"
+      },
+      {
+        "url": "http://www.url3.jpg",
+        "usage": "large"
+      }
+    ],
+    "2": [
+      {
+        "url": "http://www.url4.jpg",
+        "usage": "thumbnail"
+      },
+      {
+        "url": "http://www.url6.jpg",
+        "usage": "large"
+      }
+    ]
+  },
+  "imageIds": ["1", "2"],
+  "categoryIds": [ "1", "2", "5"],
+  "wishlistIds": ["1", "2", "5"]
+}

@@ -327,6 +327,16 @@ describe('Spec', function () {
       describe('overriding properties', function () {
 
       });
+
+      describe('Examples', function(){
+        it('merge properly when a key is false', function(){
+          var exampleTestingSpec = Spec.load('./test/fixtures/exampleTestingSpec').call('renderBlueprint');
+          return exampleTestingSpec.then(function(blueprint){
+            console.log(blueprint);
+            blueprint.indexOf('"otherPrintsAvailable": false').should.not.equal(-1);
+          });
+        })
+      })
     });
 
     describe('__exclude', function () {

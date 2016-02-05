@@ -32,5 +32,6 @@
   },
   "imageIds": ["1", "2"],
   "categoryIds": [ "1", "2", "5"],
-  "wishlistIds": ["1", "2", "5"]
+  "wishlistIds": ["1", "2", "5"],
+  "parentItems": ["1", "2", "3"]
 }

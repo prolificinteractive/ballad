@@ -1,0 +1,12 @@
+{
+  "title": "Animal",
+  "type": "object",
+  "description": "An object describing an Animal at the Zoo",
+  "properties": {
+    "species": {
+      "type": "string",
+      "required": true,
+      "description": "Species of the Animal"
+    }
+  }
+}

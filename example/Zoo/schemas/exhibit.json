@@ -1,0 +1,18 @@
+{
+  "title": "Exhibit",
+  "type": "object",
+  "description": "An object describing an Exhibit at the Zoo",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the Exhibit"
+    },
+    "animals": {
+      "type": "array",
+      "required": true,
+      "description": "A list of the animals in the exhibit",
+      "items": "{{schema 'animal' true}}"
+    }
+  }
+}

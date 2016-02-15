@@ -1,0 +1,546 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Base Zoo Spec</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  margin-left: 3px;
+  color: #c7254e;
+  background-color: rgba(255,255,255,0.7);
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item:hover {
+  background-color: #f8f8f8;
+  border-left: 2px solid #555;
+  padding-left: 15px;
+}
+.indent {
+  display: block;
+  text-indent: 16px;
+}
+.list-group-item {
+  padding-left: 16px;
+}
+.list-group-item .toggle .open {
+  display: block;
+}
+.list-group-item .toggle .closed {
+  display: none;
+}
+.list-group-item.collapsed .toggle .open {
+  display: none;
+}
+.list-group-item.collapsed .toggle .closed {
+  display: block;
+}
+a.list-group-item {
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  font-size: 15px;
+  background-color: #f5f5f5;
+}
+a.list-group-item.heading:hover {
+  background-color: #f8f8f8;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+.list-group-item a span.closed {
+  display: none;
+}
+.list-group-item a span.open {
+  display: block;
+}
+.list-group-item a.collapsed span.closed {
+  display: block;
+}
+.list-group-item a.collapsed span.open {
+  display: none;
+}
+#nav {
+  width: inherit;
+  margin-top: 38px;
+  max-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    max-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#exhibits-menu" href="#exhibits" class="list-group-item heading collapsed">Exhibits</a><div id="exhibits-menu"><a href="#exhibits-exhibits" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Exhibits</a><a href="#exhibits-exhibits-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get all Exhibits</span></a><a href="#exhibits-exhibits-post" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span><span class="indent">Add New Exhibit</span></a><a href="#exhibits-exhibit" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Exhibit</a><a href="#exhibits-exhibit-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get Specific Exhibit</span></a><a href="#exhibits-exhibit-put" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span><span class="indent">Update an Exhibit</span></a><a href="#exhibits-exhibit-delete" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span><span class="indent">Remove an Exhibit</span></a></div></div><div class="list-group"><a data-toggle="" data-target="#animals-menu" href="#animals" class="list-group-item heading collapsed">Animals</a><div id="animals-menu"><a href="#animals-animals" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Animals</a><a href="#animals-animals-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get all Animals</span></a><a href="#animals-animals-post" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span><span class="indent">Add New Animal</span></a><a href="#animals-animal" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Animal</a><a href="#animals-animal-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get Specific Animal</span></a><a href="#animals-animal-put" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span><span class="indent">Update an Animal</span></a><a href="#animals-animal-delete" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span><span class="indent">Remove an Animal</span></a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Base Zoo Spec</h1></div></header><div class="description"><p>This is the Base Zoo Spec Example. We are going to use this to build other Zoos.</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="exhibits">Exhibits&nbsp;<a href="#exhibits"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="exhibits-exhibits">Exhibits&nbsp;<a href="#exhibits-exhibits"><i class="fa fa-link"></i></a></h4><section id="exhibits-exhibits-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all Exhibits</span></div><div style="float:left"><a href="#exhibits-exhibits-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/exhibits</code></div></div><div class="panel-body"><p>Get all the exhibits in the Zoo.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#c57caebae032d482104d84d8502a7c78" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="c57caebae032d482104d84d8502a7c78" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4f9c85f3615f60379d350631a3523dcf" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="4f9c85f3615f60379d350631a3523dcf" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">exhibits</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The Monkey Island"</span></span>,
+      "<span class="hljs-attribute">animals</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Chimpanzee"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Rhesus"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Gibbon"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Rainforest"</span></span>,
+      "<span class="hljs-attribute">animals</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Python"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Jaguar"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Tarantula"</span>
+        </span>}
+      ]
+    </span>}
+  ]
+</span>}
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Exhibits"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"array"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The full list of exhibits."</span></span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">minItems</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+  "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Exhibit"</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+      <span class="hljs-string">"object"</span>
+    ]</span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Exhibit at the Zoo"</span></span>,
+    "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Name of the Exhibit"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">animals</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"A list of the animals in the exhibit"</span></span>,
+        "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+            <span class="hljs-string">"object"</span>
+          ]</span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+              "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+              "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+            </span>}
+          </span>}</span>,
+          "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}
+      </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}
+</span>}
+</code></pre></li></ul></section><section id="exhibits-exhibits-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Add New Exhibit</span></div><div style="float:left"><a href="#exhibits-exhibits-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/exhibits</code></div></div><div class="panel-body"><p>Add a new exhibition to the zoo.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#2b77416a6bed96a7192093fc45e3ab74" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="2b77416a6bed96a7192093fc45e3ab74" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The Monkey Island"</span></span>,
+  "<span class="hljs-attribute">animals</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Chimpanzee"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Rhesus"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Gibbon"</span>
+    </span>}
+  ]
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#cc5f4ae145975b31b48a29696966758c" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="cc5f4ae145975b31b48a29696966758c" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The Monkey Island"</span></span>,
+  "<span class="hljs-attribute">animals</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Chimpanzee"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Rhesus"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Gibbon"</span>
+    </span>}
+  ]
+</span>}
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Exhibit"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"object"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Exhibit at the Zoo"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Name of the Exhibit"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">animals</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"A list of the animals in the exhibit"</span></span>,
+      "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+          <span class="hljs-string">"object"</span>
+        ]</span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+        "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+            "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+          </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+      </span>}
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="exhibits-exhibit">Exhibit&nbsp;<a href="#exhibits-exhibit"><i class="fa fa-link"></i></a></h4><section id="exhibits-exhibit-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Specific Exhibit</span></div><div style="float:left"><a href="#exhibits-exhibit-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/exhibits/{exhibit_id}</code></div></div><div class="panel-body"><p>Get information about a specific exhibit.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>exhibit_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>12345</span></span><p>The <code>id</code> of the exhibit.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#3171a6a65a0af0d2068f5657f7eca639" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="3171a6a65a0af0d2068f5657f7eca639" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#fb0f4e7f259039a1196cddec89792961" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="fb0f4e7f259039a1196cddec89792961" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The Monkey Island"</span></span>,
+  "<span class="hljs-attribute">animals</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Chimpanzee"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Rhesus"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Gibbon"</span>
+    </span>}
+  ]
+</span>}
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Exhibit"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"object"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Exhibit at the Zoo"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Name of the Exhibit"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">animals</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"A list of the animals in the exhibit"</span></span>,
+      "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+          <span class="hljs-string">"object"</span>
+        ]</span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+        "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+            "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+          </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+      </span>}
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><section id="exhibits-exhibit-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Update an Exhibit</span></div><div style="float:left"><a href="#exhibits-exhibit-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/exhibits/{exhibit_id}</code></div></div><div class="panel-body"><p>Update an exhibit in the zoo</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>exhibit_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>12345</span></span><p>The <code>id</code> of the exhibit.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#54a10342df958e2a0221cd4d89ccc796" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="54a10342df958e2a0221cd4d89ccc796" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The Monkey Island"</span></span>,
+  "<span class="hljs-attribute">animals</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Chimpanzee"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Rhesus"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Gibbon"</span>
+    </span>}
+  ]
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4037593149f82787919f973da3e26020" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="4037593149f82787919f973da3e26020" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The Monkey Island"</span></span>,
+  "<span class="hljs-attribute">animals</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Chimpanzee"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Rhesus"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Gibbon"</span>
+    </span>}
+  ]
+</span>}
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Exhibit"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"object"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Exhibit at the Zoo"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Name of the Exhibit"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">animals</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"A list of the animals in the exhibit"</span></span>,
+      "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+          <span class="hljs-string">"object"</span>
+        ]</span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+        "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+            "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+          </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+      </span>}
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><section id="exhibits-exhibit-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove an Exhibit</span></div><div style="float:left"><a href="#exhibits-exhibit-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/exhibits/{exhibit_id}</code></div></div><div class="panel-body"><p>Remove an exhibition from the zoo</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>exhibit_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>12345</span></span><p>The <code>id</code> of the exhibit.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#303dfc7578111fc5a3ae666413972ba9" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="303dfc7578111fc5a3ae666413972ba9" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="animals">Animals&nbsp;<a href="#animals"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="animals-animals">Animals&nbsp;<a href="#animals-animals"><i class="fa fa-link"></i></a></h4><section id="animals-animals-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get all Animals</span></div><div style="float:left"><a href="#animals-animals-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/animals</code></div></div><div class="panel-body"><p>Get all the animals in the Zoo.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#12167ad83b2b8907c4957a101fcc1491" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="12167ad83b2b8907c4957a101fcc1491" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#8585ed9731c8db7f6c51cc7747db2837" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="8585ed9731c8db7f6c51cc7747db2837" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>[
+  {
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Chimpanzee"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Rhesus"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Gibbon"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Python"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Jaguar"</span>
+  </span>},
+  {
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Tarantula"</span>
+  </span>}
+]
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animals"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"array"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The full list of Animals."</span></span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">minItems</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+  "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+      <span class="hljs-string">"object"</span>
+    ]</span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+    "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+      </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}
+</span>}
+</code></pre></li></ul></section><section id="animals-animals-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Add New Animal</span></div><div style="float:left"><a href="#animals-animals-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/animals</code></div></div><div class="panel-body"><p>Add a new animal to the zoo.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#b87e0fa3f407e0ddde72d90efb9235d4" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="b87e0fa3f407e0ddde72d90efb9235d4" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#97211bf9ba348cfb3841202ccb484154" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="97211bf9ba348cfb3841202ccb484154" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+</span>}
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"object"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="animals-animal">Animal&nbsp;<a href="#animals-animal"><i class="fa fa-link"></i></a></h4><section id="animals-animal-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Specific Animal</span></div><div style="float:left"><a href="#animals-animal-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/animals/{animal_id}</code></div></div><div class="panel-body"><p>Get information about a specific animal.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>animal_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>kangaroo</span></span><p>The <code>id</code> of the animal.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#443c9019ee7bc68dccd29818c2402e14" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="443c9019ee7bc68dccd29818c2402e14" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#53f9cfd8c6e7a951d5ea099dc0131daf" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="53f9cfd8c6e7a951d5ea099dc0131daf" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+</span>}
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"object"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><section id="animals-animal-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Update an Animal</span></div><div style="float:left"><a href="#animals-animal-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/animals/{animal_id}</code></div></div><div class="panel-body"><p>Update an animal in the zoo</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>animal_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>kangaroo</span></span><p>The <code>id</code> of the animal.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#091f64505afe559cbb24e6f059896083" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="091f64505afe559cbb24e6f059896083" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#64bee5d741c77d1728e56500ea55049f" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="64bee5d741c77d1728e56500ea55049f" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">species</span>": <span class="hljs-value"><span class="hljs-string">"Orangutan"</span>
+</span>}
+</code></pre><h5>Schema</h5><pre><code>{
+  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Animal"</span></span>,
+  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[
+    <span class="hljs-string">"object"</span>
+  ]</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An object describing an Animal at the Zoo"</span></span>,
+  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">species</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Species of the Animal"</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><section id="animals-animal-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Remove an Animal</span></div><div style="float:left"><a href="#animals-animal-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/animals/{animal_id}</code></div></div><div class="panel-body"><p>Remove an animal from the zoo</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>animal_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>kangaroo</span></span><p>The <code>id</code> of the animal.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#d841cf4d0e18b5a2261a2c367f99f37e" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="d841cf4d0e18b5a2261a2c367f99f37e" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br><span class="hljs-attribute">sessionId</span>: <span class="hljs-string">2949324234234234023094324</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#8b3f89a878d3cef6c58fffbf76b74f34" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="8b3f89a878d3cef6c58fffbf76b74f34" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 05 Jan 2016</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

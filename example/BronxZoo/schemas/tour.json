@@ -1,0 +1,28 @@
+{
+  "title": "Tour",
+  "type": "object",
+  "description": "An object describing a tour at the Bronx Zoo",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the tour"
+    },
+    "numberOfStops": {
+      "type": "integer",
+      "required": true,
+      "description": "Number of stops on the tour."
+    },
+    "stopList": {
+      "type": "array",
+      "required": true,
+      "description": "A list of the exhibits on the tour",
+      "items": "{{schema 'exhibit' true}}"
+    },
+    "price":{
+      "type": "integer",
+      "required": true,
+      "description": "How much a tour costs, in cents."
+    }
+  }
+}

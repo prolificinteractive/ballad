@@ -1,0 +1,16 @@
+{
+  "name": "Journey through South America",
+  "numberOfStops": 1,
+  "stopList": [
+    {
+      "name": "The Monkey Island",
+      "animals": [
+        {"species": "Orangutan"},
+        {"species": "Chimpanzee"},
+        {"species": "Rhesus"},
+        {"species": "Gibbon"}
+      ]
+    }
+  ],
+  "price": 500
+}

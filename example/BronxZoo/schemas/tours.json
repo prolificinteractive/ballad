@@ -1,0 +1,8 @@
+{
+  "title": "Tours",
+  "type": "array",
+  "description": "The full list of Tours.",
+  "required": true,
+  "minItems": 1,
+  "items" : "{{schema 'tour' true}}"
+}

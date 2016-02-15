@@ -723,8 +723,3 @@ This will result in the following object for the giftCard schema:
 }
 ```
 
-## Known Issues
-
-One known issue is the ordering of the final spec. Right now all endpoints and models
-are listed alphabetically in the final output, and there is no way to change this.
-We are working on a fix, and will release that as soon as it's ready.

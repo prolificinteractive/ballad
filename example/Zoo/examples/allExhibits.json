@@ -1,0 +1,21 @@
+{
+  "exhibits": [
+    {
+      "name": "The Monkey Island",
+      "animals": [
+        {"species": "Orangutan"},
+        {"species": "Chimpanzee"},
+        {"species": "Rhesus"},
+        {"species": "Gibbon"}
+      ]
+    },
+    {
+      "name": "Rainforest",
+      "animals": [
+        {"species": "Python"},
+        {"species": "Jaguar"},
+        {"species": "Tarantula"}
+      ]
+    }
+  ]
+}

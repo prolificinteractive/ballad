@@ -327,6 +327,22 @@ describe('Spec', function () {
       describe('overriding properties', function () {
 
       });
+
+      describe('Examples', function(){
+        it('merge properly when a key is false', function(){
+          var exampleTestingSpec = Spec.load('./test/fixtures/exampleTestingSpec').call('renderBlueprint');
+          return exampleTestingSpec.then(function(blueprint){
+            blueprint.indexOf('"otherPrintsAvailable": false').should.not.equal(-1);
+          });
+        });
+
+        it('properly display arrays', function(){
+          var exampleTestingSpec = Spec.load('./test/fixtures/exampleTestingSpec').call('renderBlueprint');
+          return exampleTestingSpec.then(function(blueprint){
+            blueprint.indexOf('"parentItems": [').should.not.equal(-1);
+          });
+        });
+      });
     });
 
     describe('__exclude', function () {
@@ -412,7 +428,7 @@ describe('Spec', function () {
           .then(JSON.parse)
           .tap(function(result) {
             result.test.foo.should.equal('bar');
-          });
+        });
       });
     });
   });

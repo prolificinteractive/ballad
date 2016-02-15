@@ -1,0 +1,6 @@
+{
+  "inherit": "../exampleTestingParentSpec",
+  "features": [
+    "endpoints/products"
+  ]
+}

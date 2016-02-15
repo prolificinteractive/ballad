@@ -1,0 +1,14 @@
+{
+  "hasPriceRange": false,
+  "styleNumber": "9001",
+  "giftCardType": "certificate",
+  "skus": [
+    {
+      "isInWishlist": false
+    }
+  ],
+  "otherPrintsAvailable": false,
+  "items": [
+    "1", "2", "3"
+  ]
+}

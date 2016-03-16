@@ -6,6 +6,8 @@ var fs = Promise.promisifyAll(require('fs'));
 var pcf = require('../index');
 var Spec = pcf.Spec;
 var helpers = require('../lib/helpers');
+var proxyquire = require('proxyquire');
+var sinon = require('sinon');
 
 function testForEndpoints (spec, expected) {
   return spec.getAst().tap(function (ast) {
@@ -447,6 +449,39 @@ describe('Spec', function () {
           })
           .then(function(blueprint){
             blueprint.indexOf('parentExtended').should.not.equal(-1);
+          });
+      });
+    });
+
+    describe('__extends json merge', function () {
+      var mergeJsonSpy;
+      var RenderContext;
+
+      before(function () {
+        mergeJsonSpy = sinon.spy(helpers.mergeJson);
+        RenderContext = proxyquire('../lib/RenderContext', {
+          './helpers': {
+            mergeJson: mergeJsonSpy
+          }
+        });
+      });
+
+      it('should use the mergeJson helper function', function () {
+        var renderContext = new RenderContext({
+          spec: new pcf.Spec({})
+        });
+        var childExample = {
+          __extends: 'examples/parent',
+          bar: 'foo'
+        };
+
+        renderContext._jsonPromises = {
+          'examples/parent': Promise.resolve({ foo: 'bar' })
+        };
+
+        return renderContext.resolveJsonModifiers(childExample)
+          .then(function () {
+            mergeJsonSpy.calledOnce.should.equal(true);
           });
       });
     });

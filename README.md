@@ -8,7 +8,7 @@ keeping things [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 Each component of your specifications should be written with the [API Blueprint](https://apiblueprint.org/) 
 format. [Check out how to write Blueprints here](https://docs.apiary.io/api_101/api_blueprint_tutorial/).
 
-Ballad was build with the [spoke-hub distribution paradigm](https://en.wikipedia.org/wiki/Spoke%E2%80%93hub_distribution_paradigm) 
+Ballad was built with the [spoke-hub distribution paradigm](https://en.wikipedia.org/wiki/Spoke%E2%80%93hub_distribution_paradigm) 
 in mind, meaning it easily allows the creation of API specifications derived from a base one, in an object-oriented manner.
 
 # Table of Contents

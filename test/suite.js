@@ -449,4 +449,45 @@ describe('Spec', function () {
       });
     });
   });
+
+  describe('array merging', function() {
+    describe('if the first array is composed of objects', function() {
+      it('they should be merged based on position', function() {
+        var spec = Spec.load('./test/fixtures/arrayMergingSpec').call('renderBlueprint');
+
+        return spec.then(function(blueprint) {
+          blueprint.indexOf('Object 1').should.equal(-1);
+          blueprint.indexOf('Object 2').should.equal(-1);
+          blueprint.indexOf('Object 3').should.not.equal(-1);
+          blueprint.indexOf('Object 4').should.not.equal(-1);
+          blueprint.indexOf('Object 5').should.not.equal(-1);
+        });
+      });
+    });
+
+    describe('if the first array is not composed of objects', function() {
+      it('the child should take precedence', function() {
+        var spec = Spec.load('./test/fixtures/arrayMergingSpec').call('renderBlueprint');
+
+        return spec.then(function(blueprint) {
+          blueprint.indexOf('String 1').should.equal(-1);
+          blueprint.indexOf('String 2').should.equal(-1);
+          blueprint.indexOf('String 3').should.equal(-1);
+          blueprint.indexOf('String 4').should.not.equal(-1);
+          blueprint.indexOf('String 5').should.not.equal(-1);
+        });
+      });
+    });
+
+    describe('if one is an array and one is null', function() {
+      it('should return the array', function() {
+        var spec = Spec.load('./test/fixtures/arrayMergingSpec').call('renderBlueprint');
+
+        return spec.then(function(blueprint) {
+          blueprint.indexOf('Child only array').should.not.equal(-1);
+          blueprint.indexOf('Parent only array').should.not.equal(-1);
+        });
+      });
+    });
+  });
 });

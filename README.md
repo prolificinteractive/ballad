@@ -16,7 +16,7 @@ in mind, meaning it easily allows the creation of API specifications derived fro
   2. [Setting Up a Spec](#setting-up-a-spec)
   3. [JSON Helpers](./json-helpers.md)
   4. [Usage Examples](./examples.md)
-  5. [Best Practices](./best_practice.md)
+  5. [Best Practices](./best_practices.md)
 
 ## Installation
 

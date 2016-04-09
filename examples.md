@@ -30,9 +30,7 @@ We specify the spec to inherit from by passing the directory containing the spec
 "inherit" key. We're assuming here that the base spec has been installed as a dependency
 of the child spec in its package.json file, but that's not a requirement. A spec.json file
 must exist in this directory. You could easily change this if you wanted to write your own
-base spec as well. You should also note that the base spec only has endpoints for cart and
-product, while the child has endpoints for user. The final generated spec will have all
-three endpoints.
+base spec as well. If a parent spec is specified in this way, the child spec will have access to all the files in the parent, including its endpoints.
 
 ``` json
 {
@@ -41,7 +39,8 @@ three endpoints.
   "version": "1.0.0",
   "features": [
     "overview",
-
+    "endpoints/cart",
+    "endpoints/product",
     "endpoints/user"
   ]
 }

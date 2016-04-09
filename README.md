@@ -23,6 +23,7 @@ Check out the example directory for sample specs, and view them live here:
   3. [JSON Helpers](./json-helpers.md)
   4. [Usage Examples](./examples.md)
   5. [Best Practices](./best_practices.md)
+  6. [Contributing](./contributing.md)
 
 ## Installation
 

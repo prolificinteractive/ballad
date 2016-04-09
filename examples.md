@@ -358,7 +358,7 @@ Extending a pre-existing object is also simple. Let's say we wanted to create a 
       "type": "number",
       "required": "true",
       "description": "Value of the card"
-    }
+    },
     "activationStatus": {
       "type": "boolean",
       "required": "true",

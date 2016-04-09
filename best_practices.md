@@ -12,4 +12,7 @@ This section is designed to help you get to know the best ways to make the capab
 
 - Files with the same name will automatically be merged between the base and child directories. Use this to your advantage and keep the bulk of the spec in the base spec, only using the child to override, remove and add changes. Avoid unnecessary duplication.
 
-- Leave the base spec pretty open, don't use a lot of helpers in it. You want it to be as free of dependencies as possible. You want to avoid the scenario where you have to make changes to your base spec, since
+- Leave the base spec pretty open, don't use a lot of helpers in it. You want it to be as free of dependencies as possible. You want to avoid the scenario where you have to make changes to your base spec, since that will affect all child specs that are based on it.
+
+- Only use the `__exclude` helper in files that you know will not need to be extended. Once a key is excluded anywhere in
+the inheritance chain, it will always be removed, even if you try to add it back in later.

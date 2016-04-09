@@ -11,6 +11,10 @@ format. [Check out how to write Blueprints here](https://docs.apiary.io/api_101/
 Ballad was built with the [spoke-hub distribution paradigm](https://en.wikipedia.org/wiki/Spoke%E2%80%93hub_distribution_paradigm)
 in mind, meaning it easily allows the creation of API specifications derived from a base one, in an object-oriented manner.
 
+Check out a live preview of the output here:
+- [A Base Spec](http://htmlpreview.github.io/?https://github.com/prolificinteractive/ballad/blob/master/example/Zoo.html)
+- [A Child Spec that builds on the previous](http://htmlpreview.github.io/?https://github.com/prolificinteractive/ballad/blob/master/example/Bronx_Zoo.html)
+
 # Table of Contents
   1. [Installation](#installation)
   2. [Setting Up a Spec](#setting-up-a-spec)

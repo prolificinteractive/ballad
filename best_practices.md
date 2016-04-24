@@ -16,3 +16,5 @@ This section is designed to help you get to know the best ways to make the capab
 
 - Only use the `__exclude` helper in files that you know will not need to be extended. Once a key is excluded anywhere in
 the inheritance chain, it will always be removed, even if you try to add it back in later.
+
+- All resources should have a title, as we use this in the AST generation step to make sure the output is in the same order as in the spec.json.

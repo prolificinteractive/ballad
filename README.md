@@ -210,6 +210,14 @@ that appear in both the child and base specs will be merged together, with prope
 the child overriding properties in the base. This, combined with JSON helpers, lets you
 easily modify a base spec to suit your needs.
 
+It's worth noting that the fact that child properties take precedence has a special implication
+when writing JSON schemas using version 4 of the specification. In this version, the required keys
+are specified in an array that corresponds to the value of a separate property called required.
+Said key is treated as a regular non-object property and because of that for any modifications it
+must be overridden with an array containing **all** object properties, own and/or inherited,
+intended to be obligatory. Non of the JSON helpers described in the following section has an
+effect over it so it has to be manually managed.
+
 # JSON Helpers
 
 One of the main features you will be using to put together your blueprints will be the helpers
@@ -681,7 +689,7 @@ Extending a pre-existing object is also simple. Let's say we wanted to create a 
       "type": "number",
       "required": "true",
       "description": "Value of the card"
-    }
+    },
     "activationStatus": {
       "type": "boolean",
       "required": "true",

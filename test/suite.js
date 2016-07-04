@@ -38,6 +38,32 @@ describe('Helpers', function () {
       return merged.prop1.should.equal('red');
 
     });
+
+    it("should not try to merge nested json modifiers if the parent has them but the child doesn't", function () {
+      var childObject = {
+        name: 'name'
+      };
+      var parentObject = {
+        name: 'new name',
+        address: {
+          '__include': ['address1'],
+          address1: 'address line number 1',
+          address2: 'address line number 2'
+        }
+      };
+      var expectedResult = {
+        name: 'name',
+        address: {
+          '__include': ['address1'],
+          address1: 'address line number 1',
+          address2: 'address line number 2'
+        }
+      };
+
+      var merged = helpers.mergeJson(parentObject, childObject);
+
+      merged.should.deepEqual(expectedResult);
+    });
   });
 });
 

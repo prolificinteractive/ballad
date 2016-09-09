@@ -64,6 +64,18 @@ describe('Helpers', function () {
 
       merged.should.deepEqual(expectedResult);
     });
+
+    it('should allow falsy child values to take precedence', function () {
+      var parentObject = {
+        count: 1
+      };
+      var childObject = {
+        count: 0
+      };
+      var merged = helpers.mergeJson(parentObject, childObject);
+
+      should.strictEqual(merged.count, 0);
+    });
   });
 });
 

@@ -1,86 +1,14 @@
 #!/usr/bin/env node
 
 var path = require('path');
-var _ = require('lodash');
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs'));
-var execAsync = Promise.promisify(require('child_process').exec);
 var program = require('commander');
 var request = require('request');
 var pkg = require('../package.json');
 var Spec = require('../lib/Spec');
 
 program.version(pkg.version);
-
-program
-  .command('docs [dir] [outputFile]')
-  .description('Assemble API Blueprint from directory and generate an HTML docs file.')
-  .action(function (dir, outputFile, options) {
-    var blueprintFile = '_blueprint-tmp.md';
-    var command = [
-      path.resolve(__dirname, '../node_modules/.bin/aglio'),
-      '-i', blueprintFile,
-      '-o', outputFile
-    ].join(' ');
-
-    Spec
-      .load(dir)
-      .then(function (spec) {
-        return spec.renderBlueprint();
-      })
-      .then(function (blueprint) {
-        return fs.writeFileAsync(blueprintFile, blueprint);
-      })
-      .then(function () {
-        return execAsync(command);
-      })
-      .tap(function (args) {
-        console.log(args[0] || args[1]);
-      })
-      .catch(function (err) {
-        throw err;
-      })
-      .finally(function () {
-        fs.unlinkAsync(blueprintFile);
-      });
-  });
-
-program
-  .command('serve [dir]')
-  .description('Serve a blueprint file locally to preview it.')
-  .action(function (dir, options) {
-    var blueprintFile = '_blueprint-tmp.md';
-    var htmlFile = "_html-tmp.html";
-    var command = [
-      path.resolve(__dirname, '../node_modules/.bin/aglio'),
-      '-i', blueprintFile,
-      "--server"
-    ].join(' ');
-
-    Spec
-      .load(dir)
-      .then(function (spec) {
-        return spec.renderBlueprint();
-      })
-      .then(function (blueprint) {
-        console.log("Rendering blueprint");
-        return fs.writeFileAsync(blueprintFile, blueprint);
-      })
-      .then(function () {
-        console.log("Generating HTML");
-        setTimeout(function(){ console.log("Server starting on port 3000"); },10000);
-        return execAsync(command);
-      })
-      .tap(function (args) {
-        console.log(args[0] || args[1]);
-      })
-      .catch(function (err) {
-        throw err;
-      })
-      .finally(function () {
-        fs.unlinkAsync(blueprintFile);
-      });
-  });
 
 program
   .command('build [dir] [outputFile]')

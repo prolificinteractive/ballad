@@ -10,7 +10,6 @@
   "author": "Eric Weber, Shiraj Ganguly, Paul Miard",
   "license": "MIT",
   "dependencies": {
-    "aglio": "^1.18.0",
     "bluebird": "^2.9.27",
     "commander": "^2.8.1",
     "content-tree": "0.0.1",

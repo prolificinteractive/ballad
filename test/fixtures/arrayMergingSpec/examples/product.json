@@ -1,0 +1,12 @@
+{
+  "nonObjects": [
+    "testString4",
+    "testString5",
+    "testString6"
+  ],
+  "objects": [
+    { "name": "TestObject4"},
+    { "name": "TestObject5"},
+    { "name": "TestObject6"}
+  ]
+}

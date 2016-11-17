@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "objects": [{
+      "name": "Object 3"
+    }, {
+      "name": "Object 4"
+    }],
+    "nonObjects": [
+      "String 4",
+      "String 5"
+    ],
+    "emptyInParent": ["Child only array"],
+    "emptyInChild": null
+  }
+}

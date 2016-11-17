@@ -24,7 +24,9 @@ instantiates a new Spec using that file.
 - `getParentSpec()`: Returns the parent Spec, if it exists.
 
 - `getAst()`: Loads up the .md files specified in a spec's features and converts them to a
-[Blueprint JSON AST.](https://github.com/apiaryio/api-blueprint-ast)
+[Blueprint JSON AST.](https://github.com/apiaryio/api-blueprint-ast). This function also
+reorders the resources in the AST so that they match the order specified in the spec.json
+file. This was done to prevent a bug that would order endpoints and models inconsistently.
 
 - `renderBlueprint()`: Generates a Blueprint Markdown file.
 
